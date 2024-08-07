@@ -70,7 +70,7 @@ public class ImgUtil {
             if (roundingRadius == 0) roundingRadius = 1;
             RequestOptions requestOptions = new RequestOptions()
                 .format(DecodeFormat.PREFER_RGB_565)
-                .diskCacheStrategy(getDiskCacheStrategy(0))
+                .diskCacheStrategy(getDiskCacheStrategy(4))
                 .dontAnimate()
                 .transform(
             new CenterCrop(),
@@ -153,7 +153,7 @@ public class ImgUtil {
         if (url.contains("@User-Agent=")) ua = url.split("@User-Agent=")[1].split("@")[0];
         if (url.contains("@Referer=")) referer = url.split("@Referer=")[1].split("@")[0];
         url = url.split("@")[0];
-
+        if(TextUtils.isEmpty(url)) return null;
         /*   AuthInfo authInfo = new AuthInfo(url);
         url = authInfo.url; */
 
